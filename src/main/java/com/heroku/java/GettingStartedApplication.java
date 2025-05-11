@@ -30,6 +30,8 @@ public class GettingStartedApplication {
     @GetMapping("/database")
     String database(Map<String, Object> model) {
         try (Connection connection = dataSource.getConnection()) {
+            System.out.println("jmaloney");
+
             final var statement = connection.createStatement();
             //statement.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
             //statement.executeUpdate("INSERT INTO ticks VALUES (now())");
@@ -63,8 +65,7 @@ public class GettingStartedApplication {
             int index = (int) (rnd.nextFloat() * SALTCHARS.length());
             salt.append(SALTCHARS.charAt(index));
         }
-        String saltStr = salt.toString();
-        return saltStr;
+        return salt.toString();
 
     }
 }
