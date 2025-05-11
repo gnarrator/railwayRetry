@@ -30,11 +30,9 @@ public class GettingStartedApplication {
     @GetMapping("/database")
     String database(Map<String, Object> model) {
         try (Connection connection = dataSource.getConnection()) {
-            System.out.println("jmaloney");
+            System.out.println("Print statement inside HerokuApplication.database() method, jmaloney");
 
             final var statement = connection.createStatement();
-            //statement.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-            //statement.executeUpdate("INSERT INTO ticks VALUES (now())");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS table_timestamp_and_rand_string (tick timestamp, random_string varchar(20))");
             statement.executeUpdate("INSERT INTO table_timestamp_and_rand_string VALUES (now(), '" + getRandomString() + "')");
 
